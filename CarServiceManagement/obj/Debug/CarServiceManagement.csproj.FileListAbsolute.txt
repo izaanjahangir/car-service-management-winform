@@ -1,0 +1,11 @@
+E:\csharp\CarServiceManagement\CarServiceManagement\bin\Debug\CarServiceManagement.exe.config
+E:\csharp\CarServiceManagement\CarServiceManagement\bin\Debug\CarServiceManagement.exe
+E:\csharp\CarServiceManagement\CarServiceManagement\bin\Debug\CarServiceManagement.pdb
+E:\csharp\CarServiceManagement\CarServiceManagement\obj\Debug\CarServiceManagement.csproj.AssemblyReference.cache
+E:\csharp\CarServiceManagement\CarServiceManagement\obj\Debug\CarServiceManagement.csproj.SuggestedBindingRedirects.cache
+E:\csharp\CarServiceManagement\CarServiceManagement\obj\Debug\CarServiceManagement.Login.resources
+E:\csharp\CarServiceManagement\CarServiceManagement\obj\Debug\CarServiceManagement.Properties.Resources.resources
+E:\csharp\CarServiceManagement\CarServiceManagement\obj\Debug\CarServiceManagement.csproj.GenerateResource.cache
+E:\csharp\CarServiceManagement\CarServiceManagement\obj\Debug\CarServiceManagement.csproj.CoreCompileInputs.cache
+E:\csharp\CarServiceManagement\CarServiceManagement\obj\Debug\CarServiceManagement.exe
+E:\csharp\CarServiceManagement\CarServiceManagement\obj\Debug\CarServiceManagement.pdb
