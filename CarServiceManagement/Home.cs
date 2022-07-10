@@ -24,7 +24,9 @@ namespace CarServiceManagement
 
         private void add_order_btn_Click(object sender, EventArgs e)
         {
-
+            AddOrder addOrder = new AddOrder();
+            this.Hide();
+            addOrder.Show();
         }
     }
 }
