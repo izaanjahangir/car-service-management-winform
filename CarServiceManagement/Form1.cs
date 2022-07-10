@@ -32,8 +32,10 @@ namespace CarServiceManagement
         {
             try
             {
+                this.loading_lb.Visible = true;
+
                 string email = this.email_tb.Text;
-                string password = this.password_lb.Text;
+                string password = this.password_tb.Text;
 
                 if(email.Length == 0)
                 {
@@ -65,13 +67,17 @@ namespace CarServiceManagement
                     throw new Exception("Password is not correct");
                 }
 
-                MessageBox.Show("Logged in");
+                Home home = new Home();
+                home.Show();
+                this.Hide();
                 
             }
             catch (Exception error)
             {
                 MessageBox.Show(error.Message);
             }
+
+            this.loading_lb.Visible = false;
         }
     }
 }

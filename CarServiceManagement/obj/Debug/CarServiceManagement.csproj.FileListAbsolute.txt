@@ -101,5 +101,7 @@ E:\csharp\CarServiceManagement\CarServiceManagement\bin\Debug\System.Runtime.Com
 E:\csharp\CarServiceManagement\CarServiceManagement\bin\Debug\System.Threading.Tasks.Extensions.xml
 E:\csharp\CarServiceManagement\CarServiceManagement\bin\Debug\System.ValueTuple.xml
 E:\csharp\CarServiceManagement\CarServiceManagement\obj\Debug\CarServiceManagement.csproj.App.config
-E:\csharp\CarServiceManagement\CarServiceManagement\obj\Debug\User.resources
 E:\csharp\CarServiceManagement\CarServiceManagement\obj\Debug\CarServiceManagement.csproj.CopyComplete
+E:\csharp\CarServiceManagement\CarServiceManagement\obj\Debug\CarServiceManagement.Login.resources
+E:\csharp\CarServiceManagement\CarServiceManagement\obj\Debug\CarServiceManagement.Home.resources
+E:\csharp\CarServiceManagement\CarServiceManagement\obj\Debug\CarServiceManagement.AddOrder.resources

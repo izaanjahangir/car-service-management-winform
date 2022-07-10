@@ -10,19 +10,14 @@ using System.Windows.Forms;
 
 namespace CarServiceManagement
 {
-    public partial class Home : Form
+    public partial class AddOrder : Form
     {
-        public Home()
+        public AddOrder()
         {
             InitializeComponent();
         }
 
-        private void Home_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void add_order_btn_Click(object sender, EventArgs e)
+        private void AddOrder_Load(object sender, EventArgs e)
         {
 
         }

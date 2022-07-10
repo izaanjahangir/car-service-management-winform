@@ -31,16 +31,17 @@
             this.email_tb = new System.Windows.Forms.TextBox();
             this.login_lb = new System.Windows.Forms.Label();
             this.password_lb = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.password_tb = new System.Windows.Forms.TextBox();
             this.login_btn = new System.Windows.Forms.Button();
             this.title_lb = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.loading_lb = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // email_tb
             // 
             this.email_tb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.email_tb.Location = new System.Drawing.Point(12, 200);
+            this.email_tb.Location = new System.Drawing.Point(12, 166);
             this.email_tb.Name = "email_tb";
             this.email_tb.Size = new System.Drawing.Size(297, 20);
             this.email_tb.TabIndex = 0;
@@ -49,7 +50,7 @@
             // 
             this.login_lb.AutoSize = true;
             this.login_lb.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.login_lb.Location = new System.Drawing.Point(8, 177);
+            this.login_lb.Location = new System.Drawing.Point(8, 143);
             this.login_lb.Name = "login_lb";
             this.login_lb.Size = new System.Drawing.Size(48, 20);
             this.login_lb.TabIndex = 1;
@@ -59,24 +60,24 @@
             // 
             this.password_lb.AutoSize = true;
             this.password_lb.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.password_lb.Location = new System.Drawing.Point(8, 245);
+            this.password_lb.Location = new System.Drawing.Point(8, 211);
             this.password_lb.Name = "password_lb";
             this.password_lb.Size = new System.Drawing.Size(78, 20);
             this.password_lb.TabIndex = 3;
             this.password_lb.Text = "Password";
             // 
-            // textBox1
+            // password_tb
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 268);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.PasswordChar = '*';
-            this.textBox1.Size = new System.Drawing.Size(297, 20);
-            this.textBox1.TabIndex = 2;
+            this.password_tb.Location = new System.Drawing.Point(12, 234);
+            this.password_tb.Name = "password_tb";
+            this.password_tb.PasswordChar = '*';
+            this.password_tb.Size = new System.Drawing.Size(297, 20);
+            this.password_tb.TabIndex = 2;
             // 
             // login_btn
             // 
             this.login_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.login_btn.Location = new System.Drawing.Point(12, 316);
+            this.login_btn.Location = new System.Drawing.Point(12, 282);
             this.login_btn.Name = "login_btn";
             this.login_btn.Size = new System.Drawing.Size(297, 30);
             this.login_btn.TabIndex = 4;
@@ -88,7 +89,7 @@
             // 
             this.title_lb.AutoSize = true;
             this.title_lb.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.title_lb.Location = new System.Drawing.Point(68, 66);
+            this.title_lb.Location = new System.Drawing.Point(68, 43);
             this.title_lb.Name = "title_lb";
             this.title_lb.Size = new System.Drawing.Size(182, 37);
             this.title_lb.TabIndex = 5;
@@ -98,22 +99,34 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(56, 103);
+            this.label1.Location = new System.Drawing.Point(56, 80);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(203, 37);
             this.label1.TabIndex = 6;
             this.label1.Text = "Management";
+            // 
+            // loading_lb
+            // 
+            this.loading_lb.AutoSize = true;
+            this.loading_lb.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.loading_lb.Location = new System.Drawing.Point(42, 354);
+            this.loading_lb.Name = "loading_lb";
+            this.loading_lb.Size = new System.Drawing.Size(251, 25);
+            this.loading_lb.TabIndex = 7;
+            this.loading_lb.Text = "Logging in... Please Wait";
+            this.loading_lb.Visible = false;
             // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(321, 450);
+            this.Controls.Add(this.loading_lb);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.title_lb);
             this.Controls.Add(this.login_btn);
             this.Controls.Add(this.password_lb);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.password_tb);
             this.Controls.Add(this.login_lb);
             this.Controls.Add(this.email_tb);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -133,10 +146,11 @@
         private System.Windows.Forms.TextBox email_tb;
         private System.Windows.Forms.Label login_lb;
         private System.Windows.Forms.Label password_lb;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox password_tb;
         private System.Windows.Forms.Button login_btn;
         private System.Windows.Forms.Label title_lb;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label loading_lb;
     }
 }
 
