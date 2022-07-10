@@ -33,8 +33,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.vehicle_reg_lb = new System.Windows.Forms.Label();
             this.vehicle_reg_tb = new System.Windows.Forms.TextBox();
-            this.vehicle_modal_tb = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.vehicle_modal_lb = new System.Windows.Forms.Label();
+            this.vehicle_modal_tb = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.owner_name_tb = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -103,22 +103,22 @@
             this.vehicle_reg_tb.Size = new System.Drawing.Size(190, 20);
             this.vehicle_reg_tb.TabIndex = 5;
             // 
+            // vehicle_modal_lb
+            // 
+            this.vehicle_modal_lb.AutoSize = true;
+            this.vehicle_modal_lb.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.vehicle_modal_lb.Location = new System.Drawing.Point(263, 126);
+            this.vehicle_modal_lb.Name = "vehicle_modal_lb";
+            this.vehicle_modal_lb.Size = new System.Drawing.Size(98, 16);
+            this.vehicle_modal_lb.TabIndex = 8;
+            this.vehicle_modal_lb.Text = "Vehicle Model*";
+            // 
             // vehicle_modal_tb
             // 
-            this.vehicle_modal_tb.AutoSize = true;
-            this.vehicle_modal_tb.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.vehicle_modal_tb.Location = new System.Drawing.Point(263, 126);
+            this.vehicle_modal_tb.Location = new System.Drawing.Point(266, 145);
             this.vehicle_modal_tb.Name = "vehicle_modal_tb";
-            this.vehicle_modal_tb.Size = new System.Drawing.Size(98, 16);
-            this.vehicle_modal_tb.TabIndex = 8;
-            this.vehicle_modal_tb.Text = "Vehicle Model*";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(266, 145);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(210, 20);
-            this.textBox1.TabIndex = 7;
+            this.vehicle_modal_tb.Size = new System.Drawing.Size(210, 20);
+            this.vehicle_modal_tb.TabIndex = 7;
             // 
             // label4
             // 
@@ -353,8 +353,8 @@
             this.Controls.Add(this.owner_contact_tb);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.owner_name_tb);
+            this.Controls.Add(this.vehicle_modal_lb);
             this.Controls.Add(this.vehicle_modal_tb);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.vehicle_reg_lb);
             this.Controls.Add(this.vehicle_reg_tb);
             this.Controls.Add(this.label3);
@@ -380,8 +380,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label vehicle_reg_lb;
         private System.Windows.Forms.TextBox vehicle_reg_tb;
-        private System.Windows.Forms.Label vehicle_modal_tb;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label vehicle_modal_lb;
+        private System.Windows.Forms.TextBox vehicle_modal_tb;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox owner_name_tb;
         private System.Windows.Forms.Label label5;

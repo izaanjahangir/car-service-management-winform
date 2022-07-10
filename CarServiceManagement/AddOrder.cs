@@ -91,6 +91,8 @@ namespace CarServiceManagement
             this.request_type_cb.Text = "";
             this.owner_address_tb.Text = "";
             this.total_cost_tb.Text = "";
+            this.vehicle_modal_tb.Text = "";
+            this.owner_name_tb.Text = "";
             this.oil_change_cb.Checked = false;
             this.engine_tuneup_cb.Checked = false ;
             this.denting_cb.Checked = false;
@@ -105,6 +107,8 @@ namespace CarServiceManagement
                 string make = this.make_cb.Text;
                 string vehicleName = this.vehicle_name_tb.Text;
                 string vehicleRegistrationNumber = this.vehicle_reg_tb.Text;
+                string vehicleModal = this.vehicle_modal_tb.Text;
+                string ownerName = this.owner_name_tb.Text;
                 string ownerContact = this.owner_contact_tb.Text;
                 string ownerEmail = this.owner_email_tb.Text;
                 string requestType = this.request_type_cb.Text;
@@ -116,7 +120,7 @@ namespace CarServiceManagement
                 bool paintWork = this.paint_work_cb.Checked;
                 bool tireReplacement = this.tire_replacement_cb.Checked;
             
-                if (make.Length == 0 || vehicleName.Length == 0 || vehicleRegistrationNumber.Length == 0 || ownerContact.Length == 0 || requestType.Length == 0 || totalCost.Length == 0 || !isServicesSelect())
+                if (make.Length == 0 || vehicleModal.Length == 0 || ownerName.Length == 0 || vehicleName.Length == 0 || vehicleRegistrationNumber.Length == 0 || ownerContact.Length == 0 || requestType.Length == 0 || totalCost.Length == 0 || !isServicesSelect())
                 {
                     throw new Exception("Please fill all required fields");
                 }
@@ -143,6 +147,7 @@ namespace CarServiceManagement
                     { "ownerAddress", ownerAddress },
                     { "totalCost", totalCostCasted },
                     { "services", buildServiceList() },
+                    {"addedOn", Timestamp.GetCurrentTimestamp() }
                 };
                 CollectionReference orderCollection = db.Collection("orders");
                 await orderCollection.AddAsync(newOrder);
