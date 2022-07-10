@@ -28,17 +28,13 @@ namespace CarServiceManagement
             db = FirestoreDb.Create("fyp-car-service-management");
 
             fetchTodayOrders();
-            fetchPastOrders();
         }
 
         private async void fetchTodayOrders() {
             try
             {
-                DateTime now = DateTime.Now;
-                DateTime startOfDay = new DateTime(now.Year, now.Month, now.Day, 0, 0, 0, 0);
-                startOfDay = DateTime.SpecifyKind(startOfDay, DateTimeKind.Utc);
                 CollectionReference orderCollection = db.Collection("orders");
-                QuerySnapshot orderSnapshot = await orderCollection.WhereGreaterThanOrEqualTo("addedOn", startOfDay).OrderBy("addedOn").GetSnapshotAsync();
+                QuerySnapshot orderSnapshot = await orderCollection.OrderBy("addedOn").GetSnapshotAsync();
 
                 this.today_grid_view.Columns.Add("Vehicle Make", "Vehicle Make");
                 this.today_grid_view.Columns.Add("Vehicle Name", "Vehicle Name");
@@ -50,6 +46,7 @@ namespace CarServiceManagement
                 foreach (DocumentSnapshot documentSnapshot in orderSnapshot.Documents)
                 {
                     Dictionary<string, object> data = documentSnapshot.ToDictionary();
+                    Console.WriteLine(data);
                     Dictionary<string, object> order = new Dictionary<string, object>()
                     {
                         {"vehicleName", data.ContainsKey("vehicleName") ? data["vehicleName"]: "" },
@@ -57,10 +54,12 @@ namespace CarServiceManagement
                         {"ownerContact", data.ContainsKey("ownerContact") ? data["ownerContact"]: "" },
                         {"ownerName", data.ContainsKey("ownerName") ? data["ownerName"]: "" },
                         {"requestType", data.ContainsKey("requestType") ? data["requestType"]: "" },
-                        {"totalCost", data.ContainsKey("totalCost") ? data["totalCost"]: "" },
+                        {"totalCost", data.ContainsKey("totalCost") ? data["totalCost"].ToString(): "" },
                     };
+                    Console.WriteLine("HERE");
                     this.today_grid_view.Rows.Add(order["make"], order["vehicleName"], order["ownerName"], order["ownerContact"], order["requestType"], order["totalCost"]);
-
+                   
+                    Console.WriteLine("End of Loop");
                 }
             }
             catch (Exception error)
@@ -69,12 +68,17 @@ namespace CarServiceManagement
             }
         }
 
+
+        /*
         private async void fetchPastOrders() {
             try
             {
                 DateTime now = DateTime.Now;
                 DateTime startOfDay = new DateTime(now.Year, now.Month, now.Day, 0, 0, 0, 0);
                 startOfDay = DateTime.SpecifyKind(startOfDay, DateTimeKind.Utc);
+
+                MessageBox.Show(startOfDay.ToString());
+
                 CollectionReference orderCollection = db.Collection("orders");
                 QuerySnapshot orderSnapshot = await orderCollection.WhereLessThan("addedOn", startOfDay).OrderBy("addedOn").GetSnapshotAsync();
 
@@ -105,12 +109,28 @@ namespace CarServiceManagement
                 MessageBox.Show(error.Message);
             }
         }
+        */
 
         private void add_order_btn_Click(object sender, EventArgs e)
         {
             AddOrder addOrder = new AddOrder();
             this.Hide();
             addOrder.Show();
+        }
+
+        private void today_grid_view_selection_changed(object sender, EventArgs e)
+        {
+            DataGridView dgv = sender as DataGridView;
+
+            if(dgv != null && dgv.SelectedRows.Count == 1)
+            {
+                DataGridViewRow row = dgv.SelectedRows[0];
+
+                if (row != null)
+                {
+                    MessageBox.Show(row.Cells[0].Value.ToString());
+                }
+            }
         }
     }
 }
