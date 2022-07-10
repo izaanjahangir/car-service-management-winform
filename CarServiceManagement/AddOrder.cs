@@ -107,7 +107,7 @@ namespace CarServiceManagement
                 string make = this.make_cb.Text;
                 string vehicleName = this.vehicle_name_tb.Text;
                 string vehicleRegistrationNumber = this.vehicle_reg_tb.Text;
-                string vehicleModal = this.vehicle_modal_tb.Text;
+                string vehicleModel = this.vehicle_modal_tb.Text;
                 string ownerName = this.owner_name_tb.Text;
                 string ownerContact = this.owner_contact_tb.Text;
                 string ownerEmail = this.owner_email_tb.Text;
@@ -120,7 +120,7 @@ namespace CarServiceManagement
                 bool paintWork = this.paint_work_cb.Checked;
                 bool tireReplacement = this.tire_replacement_cb.Checked;
             
-                if (make.Length == 0 || vehicleModal.Length == 0 || ownerName.Length == 0 || vehicleName.Length == 0 || vehicleRegistrationNumber.Length == 0 || ownerContact.Length == 0 || requestType.Length == 0 || totalCost.Length == 0 || !isServicesSelect())
+                if (make.Length == 0 || vehicleModel.Length == 0 || ownerName.Length == 0 || vehicleName.Length == 0 || vehicleRegistrationNumber.Length == 0 || ownerContact.Length == 0 || requestType.Length == 0 || totalCost.Length == 0 || !isServicesSelect())
                 {
                     throw new Exception("Please fill all required fields");
                 }
@@ -145,7 +145,9 @@ namespace CarServiceManagement
                     { "ownerEmail", ownerEmail },
                     { "requestType", requestType },
                     { "ownerAddress", ownerAddress },
+                    { "vehicleModel", vehicleModel},
                     { "totalCost", totalCostCasted },
+                    { "ownerName", ownerName },
                     { "services", buildServiceList() },
                     {"addedOn", Timestamp.GetCurrentTimestamp() }
                 };
