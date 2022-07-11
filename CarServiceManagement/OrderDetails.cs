@@ -208,10 +208,8 @@ namespace CarServiceManagement
 
                 addDataToPDFDocument("Customer Contact: ", order["ownerContact"].ToString(), document);
 
-                if(order["ownerAddress"].ToString().Length > 0)
-                {
-                    addDataToPDFDocument("Customer Address: ", order["ownerAddress"].ToString(), document);
-                }
+                addDataToPDFDocument("Customer Address: ", order["ownerAddress"].ToString(), document);
+                
 
                 addDataToPDFDocument("Vehicle Make: ", order["make"].ToString(), document);
                 addDataToPDFDocument("Vehicle Name: ", order["vehicleName"].ToString(), document);
@@ -248,8 +246,8 @@ namespace CarServiceManagement
                 fs.Write(bytes, 0, bytes.Length);
                 fs.Close();
 
-                File.OpenRead(path);
-                MessageBox.Show("Done");
+                System.Diagnostics.Process.Start(path);
+                MessageBox.Show("Bill saved on path " + billDirectoryPath);
             }
         }
 
