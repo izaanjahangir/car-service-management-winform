@@ -32,7 +32,6 @@
             this.order_id_lb = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.make_tb = new System.Windows.Forms.TextBox();
             this.vehicle_name_tb = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.vehicle_reg_tb = new System.Windows.Forms.TextBox();
@@ -47,7 +46,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.owner_email_tb = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.request_type_tb = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.owner_address_tb = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -58,7 +56,11 @@
             this.tire_replacement_cb = new System.Windows.Forms.CheckBox();
             this.denting_cb = new System.Windows.Forms.CheckBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.total_cost_lb = new System.Windows.Forms.Label();
+            this.make_cb = new System.Windows.Forms.ComboBox();
+            this.request_type_cb = new System.Windows.Forms.ComboBox();
+            this.save_btn = new System.Windows.Forms.Button();
+            this.total_cost_tb = new System.Windows.Forms.TextBox();
+            this.delete_btn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -100,17 +102,8 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Make";
             // 
-            // make_tb
-            // 
-            this.make_tb.Enabled = false;
-            this.make_tb.Location = new System.Drawing.Point(26, 129);
-            this.make_tb.Name = "make_tb";
-            this.make_tb.Size = new System.Drawing.Size(160, 20);
-            this.make_tb.TabIndex = 4;
-            // 
             // vehicle_name_tb
             // 
-            this.vehicle_name_tb.Enabled = false;
             this.vehicle_name_tb.Location = new System.Drawing.Point(221, 129);
             this.vehicle_name_tb.Name = "vehicle_name_tb";
             this.vehicle_name_tb.Size = new System.Drawing.Size(160, 20);
@@ -128,7 +121,6 @@
             // 
             // vehicle_reg_tb
             // 
-            this.vehicle_reg_tb.Enabled = false;
             this.vehicle_reg_tb.Location = new System.Drawing.Point(413, 129);
             this.vehicle_reg_tb.Name = "vehicle_reg_tb";
             this.vehicle_reg_tb.Size = new System.Drawing.Size(160, 20);
@@ -146,7 +138,6 @@
             // 
             // vehicle_model_tb
             // 
-            this.vehicle_model_tb.Enabled = false;
             this.vehicle_model_tb.Location = new System.Drawing.Point(617, 129);
             this.vehicle_model_tb.Name = "vehicle_model_tb";
             this.vehicle_model_tb.Size = new System.Drawing.Size(160, 20);
@@ -184,7 +175,6 @@
             // 
             // owner_name_tb
             // 
-            this.owner_name_tb.Enabled = false;
             this.owner_name_tb.Location = new System.Drawing.Point(27, 241);
             this.owner_name_tb.Name = "owner_name_tb";
             this.owner_name_tb.Size = new System.Drawing.Size(160, 20);
@@ -202,7 +192,6 @@
             // 
             // owner_contact_tb
             // 
-            this.owner_contact_tb.Enabled = false;
             this.owner_contact_tb.Location = new System.Drawing.Point(222, 241);
             this.owner_contact_tb.Name = "owner_contact_tb";
             this.owner_contact_tb.Size = new System.Drawing.Size(160, 20);
@@ -220,7 +209,6 @@
             // 
             // owner_email_tb
             // 
-            this.owner_email_tb.Enabled = false;
             this.owner_email_tb.Location = new System.Drawing.Point(413, 241);
             this.owner_email_tb.Name = "owner_email_tb";
             this.owner_email_tb.Size = new System.Drawing.Size(160, 20);
@@ -236,14 +224,6 @@
             this.label10.TabIndex = 17;
             this.label10.Text = "Owner Email";
             // 
-            // request_type_tb
-            // 
-            this.request_type_tb.Enabled = false;
-            this.request_type_tb.Location = new System.Drawing.Point(617, 241);
-            this.request_type_tb.Name = "request_type_tb";
-            this.request_type_tb.Size = new System.Drawing.Size(160, 20);
-            this.request_type_tb.TabIndex = 20;
-            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -256,7 +236,6 @@
             // 
             // owner_address_tb
             // 
-            this.owner_address_tb.Enabled = false;
             this.owner_address_tb.Location = new System.Drawing.Point(27, 298);
             this.owner_address_tb.Multiline = true;
             this.owner_address_tb.Name = "owner_address_tb";
@@ -286,7 +265,6 @@
             // oil_change_cb
             // 
             this.oil_change_cb.AutoSize = true;
-            this.oil_change_cb.Enabled = false;
             this.oil_change_cb.Location = new System.Drawing.Point(186, 397);
             this.oil_change_cb.Name = "oil_change_cb";
             this.oil_change_cb.Size = new System.Drawing.Size(78, 17);
@@ -297,7 +275,6 @@
             // paint_work_cb
             // 
             this.paint_work_cb.AutoSize = true;
-            this.paint_work_cb.Enabled = false;
             this.paint_work_cb.Location = new System.Drawing.Point(270, 397);
             this.paint_work_cb.Name = "paint_work_cb";
             this.paint_work_cb.Size = new System.Drawing.Size(79, 17);
@@ -308,7 +285,6 @@
             // engine_tuneup_cb
             // 
             this.engine_tuneup_cb.AutoSize = true;
-            this.engine_tuneup_cb.Enabled = false;
             this.engine_tuneup_cb.Location = new System.Drawing.Point(355, 397);
             this.engine_tuneup_cb.Name = "engine_tuneup_cb";
             this.engine_tuneup_cb.Size = new System.Drawing.Size(102, 17);
@@ -319,7 +295,6 @@
             // tire_replacement_cb
             // 
             this.tire_replacement_cb.AutoSize = true;
-            this.tire_replacement_cb.Enabled = false;
             this.tire_replacement_cb.Location = new System.Drawing.Point(463, 397);
             this.tire_replacement_cb.Name = "tire_replacement_cb";
             this.tire_replacement_cb.Size = new System.Drawing.Size(110, 17);
@@ -330,7 +305,6 @@
             // denting_cb
             // 
             this.denting_cb.AutoSize = true;
-            this.denting_cb.Enabled = false;
             this.denting_cb.Location = new System.Drawing.Point(579, 397);
             this.denting_cb.Name = "denting_cb";
             this.denting_cb.Size = new System.Drawing.Size(63, 17);
@@ -348,21 +322,59 @@
             this.label14.TabIndex = 29;
             this.label14.Text = "Total Cost";
             // 
-            // total_cost_lb
+            // make_cb
             // 
-            this.total_cost_lb.AutoSize = true;
-            this.total_cost_lb.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.total_cost_lb.Location = new System.Drawing.Point(144, 441);
-            this.total_cost_lb.Name = "total_cost_lb";
-            this.total_cost_lb.Size = new System.Drawing.Size(0, 25);
-            this.total_cost_lb.TabIndex = 30;
+            this.make_cb.FormattingEnabled = true;
+            this.make_cb.Location = new System.Drawing.Point(26, 128);
+            this.make_cb.Name = "make_cb";
+            this.make_cb.Size = new System.Drawing.Size(161, 21);
+            this.make_cb.TabIndex = 31;
+            // 
+            // request_type_cb
+            // 
+            this.request_type_cb.FormattingEnabled = true;
+            this.request_type_cb.Location = new System.Drawing.Point(617, 240);
+            this.request_type_cb.Name = "request_type_cb";
+            this.request_type_cb.Size = new System.Drawing.Size(160, 21);
+            this.request_type_cb.TabIndex = 32;
+            // 
+            // save_btn
+            // 
+            this.save_btn.Location = new System.Drawing.Point(652, 441);
+            this.save_btn.Name = "save_btn";
+            this.save_btn.Size = new System.Drawing.Size(125, 25);
+            this.save_btn.TabIndex = 33;
+            this.save_btn.Text = "Save";
+            this.save_btn.UseVisualStyleBackColor = true;
+            this.save_btn.Click += new System.EventHandler(this.save_btn_Click);
+            // 
+            // total_cost_tb
+            // 
+            this.total_cost_tb.Location = new System.Drawing.Point(144, 444);
+            this.total_cost_tb.Name = "total_cost_tb";
+            this.total_cost_tb.Size = new System.Drawing.Size(160, 20);
+            this.total_cost_tb.TabIndex = 34;
+            // 
+            // delete_btn
+            // 
+            this.delete_btn.Location = new System.Drawing.Point(521, 441);
+            this.delete_btn.Name = "delete_btn";
+            this.delete_btn.Size = new System.Drawing.Size(125, 25);
+            this.delete_btn.TabIndex = 35;
+            this.delete_btn.Text = "Delete";
+            this.delete_btn.UseVisualStyleBackColor = true;
+            this.delete_btn.Click += new System.EventHandler(this.delete_btn_Click);
             // 
             // OrderDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 489);
-            this.Controls.Add(this.total_cost_lb);
+            this.Controls.Add(this.delete_btn);
+            this.Controls.Add(this.total_cost_tb);
+            this.Controls.Add(this.save_btn);
+            this.Controls.Add(this.request_type_cb);
+            this.Controls.Add(this.make_cb);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.denting_cb);
             this.Controls.Add(this.tire_replacement_cb);
@@ -372,7 +384,6 @@
             this.Controls.Add(this.label13);
             this.Controls.Add(this.owner_address_tb);
             this.Controls.Add(this.label12);
-            this.Controls.Add(this.request_type_tb);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.owner_email_tb);
             this.Controls.Add(this.label10);
@@ -388,7 +399,6 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.vehicle_name_tb);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.make_tb);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.order_id_lb);
@@ -410,7 +420,6 @@
         private System.Windows.Forms.Label order_id_lb;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox make_tb;
         private System.Windows.Forms.TextBox vehicle_name_tb;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox vehicle_reg_tb;
@@ -425,7 +434,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox owner_email_tb;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox request_type_tb;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox owner_address_tb;
         private System.Windows.Forms.Label label12;
@@ -436,6 +444,10 @@
         private System.Windows.Forms.CheckBox tire_replacement_cb;
         private System.Windows.Forms.CheckBox denting_cb;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label total_cost_lb;
+        private System.Windows.Forms.ComboBox make_cb;
+        private System.Windows.Forms.ComboBox request_type_cb;
+        private System.Windows.Forms.Button save_btn;
+        private System.Windows.Forms.TextBox total_cost_tb;
+        private System.Windows.Forms.Button delete_btn;
     }
 }
