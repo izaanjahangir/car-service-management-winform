@@ -106,3 +106,6 @@ E:\csharp\CarServiceManagement\CarServiceManagement\obj\Debug\CarServiceManageme
 E:\csharp\CarServiceManagement\CarServiceManagement\obj\Debug\CarServiceManagement.Home.resources
 E:\csharp\CarServiceManagement\CarServiceManagement\obj\Debug\CarServiceManagement.AddOrder.resources
 E:\csharp\CarServiceManagement\CarServiceManagement\obj\Debug\CarServiceManagement.OrderDetails.resources
+E:\csharp\CarServiceManagement\CarServiceManagement\bin\Debug\BouncyCastle.Crypto.dll
+E:\csharp\CarServiceManagement\CarServiceManagement\bin\Debug\itextsharp.dll
+E:\csharp\CarServiceManagement\CarServiceManagement\bin\Debug\itextsharp.xml

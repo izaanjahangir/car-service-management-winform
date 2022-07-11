@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Google.Cloud.Firestore;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 
 namespace CarServiceManagement
 {
@@ -29,7 +32,7 @@ namespace CarServiceManagement
         }
 
         private void OrderDetails_Load(object sender, EventArgs e)
-        {
+        {         
             string path = AppDomain.CurrentDomain.BaseDirectory + @"service-account.json";
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
 
@@ -117,6 +120,139 @@ namespace CarServiceManagement
             return services;
         }
 
+        private Paragraph addDataToPDFDocument(string label, string value, Document document) {
+            Phrase labelPhrase = new Phrase(label);
+            labelPhrase.Font = FontFactory.GetFont(FontFactory.HELVETICA, 24f, BaseColor.BLACK);
+            Phrase valuePhrase = new Phrase(value.Length == 0 ? "Not Specified" : value);
+            valuePhrase.Font = FontFactory.GetFont(FontFactory.HELVETICA, 24f, BaseColor.BLACK);
+
+            Paragraph para = new Paragraph();
+            para.Add(labelPhrase);
+            para.Add(valuePhrase);
+            para.SpacingAfter = 30f;
+
+            document.Add(para);
+
+            return para;
+        }
+
+        private void addServicesTableToPDFDocument(List<object> services, Document document) {
+            PdfPTable table = new PdfPTable(2);
+
+            PdfPCell cell = new PdfPCell(new Phrase("Services Used"));
+
+            cell.Colspan = 2;
+
+            cell.HorizontalAlignment = 1;
+
+            table.AddCell(cell);
+
+            table.AddCell("Oil Change");
+            table.AddCell(services.Contains("Oil Change") ? "Yes": "No");
+
+            table.AddCell("Engine Tune up");
+            table.AddCell(services.Contains("Engine Tune up") ? "Yes" : "No");
+
+
+            table.AddCell("Denting");
+            table.AddCell(services.Contains("Denting") ? "Yes" : "No");
+
+
+            table.AddCell("Paint Work");
+            table.AddCell(services.Contains("Paint Work") ? "Yes" : "No");
+
+            table.AddCell("Tire Replacement");
+            table.AddCell(services.Contains("Tire Replacement") ? "Yes" : "No");
+
+            table.SpacingAfter = 30f;
+
+            document.Add(table);
+        }
+
+        private void addHeadingToPDFDocument(Document document)
+        {
+            PdfPTable table = new PdfPTable(2);
+            PdfPCell cell = new PdfPCell(new Phrase("Customer Bill"));
+            cell.HorizontalAlignment = 1;
+            cell.Colspan = 2;
+
+            PdfPCell cell2 = new PdfPCell(new Phrase("Order ID"));
+            cell2.HorizontalAlignment = 0;
+            PdfPCell cell3 = new PdfPCell(new Phrase(order["orderID"].ToString()));
+            cell3.HorizontalAlignment = 0;
+            table.AddCell(cell);
+            table.AddCell(cell2);
+            table.AddCell(cell3);
+
+            table.SpacingAfter = 30f;
+
+            document.Add(table);
+        }
+
+        private void generatePDF() {
+            using (System.IO.MemoryStream memoryStream = new System.IO.MemoryStream())
+            {
+                Document document = new Document(PageSize.A4, 10, 10, 10, 10);
+
+                PdfWriter writer = PdfWriter.GetInstance(document, memoryStream);
+                document.Open();
+
+
+                addHeadingToPDFDocument(document);
+
+                Paragraph datePara = addDataToPDFDocument("Date: ", DateTime.Now.ToString(), document);
+                datePara.Alignment = Element.ALIGN_RIGHT;
+                addDataToPDFDocument("Request Type: ", order["requestType"].ToString(), document);
+                addDataToPDFDocument("Customer Name: ",order["ownerName"].ToString(), document);
+                addDataToPDFDocument("Customer Email: ",order["ownerEmail"].ToString(), document);
+
+                addDataToPDFDocument("Customer Contact: ", order["ownerContact"].ToString(), document);
+
+                if(order["ownerAddress"].ToString().Length > 0)
+                {
+                    addDataToPDFDocument("Customer Address: ", order["ownerAddress"].ToString(), document);
+                }
+
+                addDataToPDFDocument("Vehicle Make: ", order["make"].ToString(), document);
+                addDataToPDFDocument("Vehicle Name: ", order["vehicleName"].ToString(), document);
+
+                addDataToPDFDocument("Vehicle Model: ", order["vehicleModel"].ToString(), document);
+
+                addDataToPDFDocument("Vehicle Reg #: ", order["vehicleRegistrationNumber"].ToString(), document);
+
+                addServicesTableToPDFDocument((List<object>)order["services"], document);
+
+                addDataToPDFDocument("Total Cost: ", order["totalCost"].ToString() + " Pkr", document);
+
+                document.Close();
+
+                byte[] bytes = memoryStream.ToArray();
+                memoryStream.Close();
+
+                string currentDrive = AppDomain.CurrentDomain.BaseDirectory.Substring(0, 2);
+                string billDirectoryPath = currentDrive + "\\Generated Bills";
+
+                if (!Directory.Exists(billDirectoryPath))
+                {
+                    Directory.CreateDirectory(billDirectoryPath);
+                }
+
+                string path = billDirectoryPath + "\\" + "bill-" + order["orderID"].ToString() + ".pdf";
+
+                if(File.Exists(path))
+                {
+                    File.Delete(path);
+                }
+
+                FileStream fs = new FileStream(path, FileMode.Create, FileAccess.Write);
+                fs.Write(bytes, 0, bytes.Length);
+                fs.Close();
+
+                File.OpenRead(path);
+                MessageBox.Show("Done");
+            }
+        }
+
         private async void save_btn_Click(object sender, EventArgs e)
         {
             try
@@ -193,6 +329,11 @@ namespace CarServiceManagement
                 MessageBox.Show(error.Message);
             }
 
+        }
+
+        private void generate_bill_btn_Click(object sender, EventArgs e)
+        {
+            generatePDF();
         }
     }
 }

@@ -61,6 +61,7 @@
             this.save_btn = new System.Windows.Forms.Button();
             this.total_cost_tb = new System.Windows.Forms.TextBox();
             this.delete_btn = new System.Windows.Forms.Button();
+            this.generate_bill_btn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -365,11 +366,22 @@
             this.delete_btn.UseVisualStyleBackColor = true;
             this.delete_btn.Click += new System.EventHandler(this.delete_btn_Click);
             // 
+            // generate_bill_btn
+            // 
+            this.generate_bill_btn.Location = new System.Drawing.Point(390, 441);
+            this.generate_bill_btn.Name = "generate_bill_btn";
+            this.generate_bill_btn.Size = new System.Drawing.Size(125, 25);
+            this.generate_bill_btn.TabIndex = 36;
+            this.generate_bill_btn.Text = "Generate Bill";
+            this.generate_bill_btn.UseVisualStyleBackColor = true;
+            this.generate_bill_btn.Click += new System.EventHandler(this.generate_bill_btn_Click);
+            // 
             // OrderDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 489);
+            this.Controls.Add(this.generate_bill_btn);
             this.Controls.Add(this.delete_btn);
             this.Controls.Add(this.total_cost_tb);
             this.Controls.Add(this.save_btn);
@@ -449,5 +461,6 @@
         private System.Windows.Forms.Button save_btn;
         private System.Windows.Forms.TextBox total_cost_tb;
         private System.Windows.Forms.Button delete_btn;
+        private System.Windows.Forms.Button generate_bill_btn;
     }
 }
