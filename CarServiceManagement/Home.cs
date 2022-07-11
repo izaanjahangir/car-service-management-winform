@@ -14,6 +14,8 @@ namespace CarServiceManagement
     public partial class Home : Form
     {
         private FirestoreDb db;
+        private string selectedOrderID;
+        private IReadOnlyList<DocumentSnapshot> orders;
 
         public Home()
         {
@@ -36,6 +38,7 @@ namespace CarServiceManagement
                 CollectionReference orderCollection = db.Collection("orders");
                 QuerySnapshot orderSnapshot = await orderCollection.OrderBy("addedOn").GetSnapshotAsync();
 
+                this.today_grid_view.Columns.Add("Order ID", "Order ID");
                 this.today_grid_view.Columns.Add("Vehicle Make", "Vehicle Make");
                 this.today_grid_view.Columns.Add("Vehicle Name", "Vehicle Name");
                 this.today_grid_view.Columns.Add("Owner Name", "Owner Name");
@@ -43,12 +46,15 @@ namespace CarServiceManagement
                 this.today_grid_view.Columns.Add("Request Type", "Request Type");
                 this.today_grid_view.Columns.Add("Total Cost", "Total Cost");
 
+                orders = orderSnapshot.Documents;
+
                 foreach (DocumentSnapshot documentSnapshot in orderSnapshot.Documents)
                 {
                     Dictionary<string, object> data = documentSnapshot.ToDictionary();
                     Console.WriteLine(data);
                     Dictionary<string, object> order = new Dictionary<string, object>()
                     {
+                        {"orderID", documentSnapshot.Id },
                         {"vehicleName", data.ContainsKey("vehicleName") ? data["vehicleName"]: "" },
                         {"make", data.ContainsKey("make") ? data["make"]: "" },
                         {"ownerContact", data.ContainsKey("ownerContact") ? data["ownerContact"]: "" },
@@ -57,7 +63,7 @@ namespace CarServiceManagement
                         {"totalCost", data.ContainsKey("totalCost") ? data["totalCost"].ToString(): "" },
                     };
                     Console.WriteLine("HERE");
-                    this.today_grid_view.Rows.Add(order["make"], order["vehicleName"], order["ownerName"], order["ownerContact"], order["requestType"], order["totalCost"]);
+                    this.today_grid_view.Rows.Add(order["orderID"], order["make"], order["vehicleName"], order["ownerName"], order["ownerContact"], order["requestType"], order["totalCost"]);
                    
                     Console.WriteLine("End of Loop");
                 }
@@ -128,8 +134,54 @@ namespace CarServiceManagement
 
                 if (row != null)
                 {
-                    MessageBox.Show(row.Cells[0].Value.ToString());
+                    selectedOrderID = row.Cells[0].Value.ToString();
+                    this.details_btn.Enabled = true;
                 }
+            }
+            else
+            {
+                selectedOrderID = null;
+                this.details_btn.Enabled = false;
+            }
+        }
+
+        private void details_btn_Click(object sender, EventArgs e)
+        {
+            Dictionary<string, object> foundOrder= null;
+
+            foreach (DocumentSnapshot documentSnapshot in orders)
+            {
+                Dictionary<string, object> data = documentSnapshot.ToDictionary();
+                Dictionary<string, object> newOrder = new Dictionary<string, object>()
+                {
+                    {"orderID", documentSnapshot.Id.ToString() },
+                    {"vehicleName", data.ContainsKey("vehicleName") ? data["vehicleName"]: "" },
+                    {"make", data.ContainsKey("make") ? data["make"]: "" },
+                    {"ownerContact", data.ContainsKey("ownerContact") ? data["ownerContact"]: "" },
+                    {"ownerName", data.ContainsKey("ownerName") ? data["ownerName"]: "" },
+                    {"requestType", data.ContainsKey("requestType") ? data["requestType"]: "" },
+                    {"totalCost", data.ContainsKey("totalCost") ? data["totalCost"].ToString(): "" },
+                    {"addedOn", data["addedOn"] },
+                    {"ownerAddress", data.ContainsKey("ownerAddress") ? data["ownerAddress"].ToString(): "" },
+                    {"ownerEmail", data.ContainsKey("ownerEmail") ? data["ownerEmail"].ToString(): "" },
+                    {"services", data.ContainsKey("services") ? data["services"]: new List<string>() },
+                    {"vehicleModel", data.ContainsKey("vehicleModel") ? data["vehicleModel"]: "" },
+                    {"vehicleRegistrationNumber", data.ContainsKey("vehicleRegistrationNumber") ? data["vehicleRegistrationNumber"]: "" },
+
+                };
+                if (documentSnapshot.Id == selectedOrderID)
+                {
+                    foundOrder = newOrder;
+                }
+            }
+
+            if(foundOrder == null)
+            {
+                MessageBox.Show("Something went wrong!");
+            }
+            else
+            {
+                MessageBox.Show(foundOrder["orderID"].ToString());
             }
         }
     }
