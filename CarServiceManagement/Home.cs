@@ -181,7 +181,10 @@ namespace CarServiceManagement
             }
             else
             {
-                MessageBox.Show(foundOrder["orderID"].ToString());
+                OrderDetails orderDetails = new OrderDetails();
+                orderDetails.order = foundOrder;
+                this.Hide();
+                orderDetails.Show();
             }
         }
     }
