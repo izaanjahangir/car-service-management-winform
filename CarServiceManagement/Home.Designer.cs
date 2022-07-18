@@ -33,6 +33,8 @@
             this.today_grid_view = new System.Windows.Forms.DataGridView();
             this.details_btn = new System.Windows.Forms.Button();
             this.logout_btn = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.today_grid_view)).BeginInit();
             this.SuspendLayout();
             // 
@@ -40,7 +42,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(21, 26);
+            this.label1.Location = new System.Drawing.Point(21, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(115, 37);
             this.label1.TabIndex = 0;
@@ -49,7 +51,7 @@
             // add_order_btn
             // 
             this.add_order_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.add_order_btn.Location = new System.Drawing.Point(601, 26);
+            this.add_order_btn.Location = new System.Drawing.Point(601, 12);
             this.add_order_btn.Name = "add_order_btn";
             this.add_order_btn.Size = new System.Drawing.Size(137, 37);
             this.add_order_btn.TabIndex = 1;
@@ -60,9 +62,9 @@
             // today_grid_view
             // 
             this.today_grid_view.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.today_grid_view.Location = new System.Drawing.Point(28, 79);
+            this.today_grid_view.Location = new System.Drawing.Point(28, 106);
             this.today_grid_view.Name = "today_grid_view";
-            this.today_grid_view.Size = new System.Drawing.Size(710, 355);
+            this.today_grid_view.Size = new System.Drawing.Size(710, 328);
             this.today_grid_view.TabIndex = 2;
             this.today_grid_view.SelectionChanged += new System.EventHandler(this.today_grid_view_selection_changed);
             // 
@@ -87,12 +89,35 @@
             this.logout_btn.TabIndex = 4;
             this.logout_btn.Text = "Logout";
             this.logout_btn.UseVisualStyleBackColor = true;
+            this.logout_btn.Click += new System.EventHandler(this.logout_btn_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(24, 49);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(409, 20);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Select any one row by clicking on the extreme left column";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(24, 69);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(313, 20);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "After that see details button will be enabled";
             // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(761, 499);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.logout_btn);
             this.Controls.Add(this.details_btn);
             this.Controls.Add(this.today_grid_view);
@@ -117,5 +142,7 @@
         private System.Windows.Forms.DataGridView today_grid_view;
         private System.Windows.Forms.Button details_btn;
         private System.Windows.Forms.Button logout_btn;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }

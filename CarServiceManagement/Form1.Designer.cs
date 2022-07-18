@@ -36,6 +36,8 @@
             this.title_lb = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.loading_lb = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // email_tb
@@ -60,7 +62,7 @@
             // 
             this.password_lb.AutoSize = true;
             this.password_lb.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.password_lb.Location = new System.Drawing.Point(8, 211);
+            this.password_lb.Location = new System.Drawing.Point(8, 223);
             this.password_lb.Name = "password_lb";
             this.password_lb.Size = new System.Drawing.Size(78, 20);
             this.password_lb.TabIndex = 3;
@@ -68,7 +70,7 @@
             // 
             // password_tb
             // 
-            this.password_tb.Location = new System.Drawing.Point(12, 234);
+            this.password_tb.Location = new System.Drawing.Point(12, 246);
             this.password_tb.Name = "password_tb";
             this.password_tb.PasswordChar = '*';
             this.password_tb.Size = new System.Drawing.Size(297, 20);
@@ -77,7 +79,7 @@
             // login_btn
             // 
             this.login_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.login_btn.Location = new System.Drawing.Point(12, 282);
+            this.login_btn.Location = new System.Drawing.Point(12, 317);
             this.login_btn.Name = "login_btn";
             this.login_btn.Size = new System.Drawing.Size(297, 30);
             this.login_btn.TabIndex = 4;
@@ -109,18 +111,38 @@
             // 
             this.loading_lb.AutoSize = true;
             this.loading_lb.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.loading_lb.Location = new System.Drawing.Point(42, 354);
+            this.loading_lb.Location = new System.Drawing.Point(38, 390);
             this.loading_lb.Name = "loading_lb";
             this.loading_lb.Size = new System.Drawing.Size(251, 25);
             this.loading_lb.TabIndex = 7;
             this.loading_lb.Text = "Logging in... Please Wait";
             this.loading_lb.Visible = false;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 189);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(155, 13);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Hint: Use admin@example.com";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(12, 269);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(102, 13);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Hint: Use 12345678";
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(321, 450);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.loading_lb);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.title_lb);
@@ -151,6 +173,8 @@
         private System.Windows.Forms.Label title_lb;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label loading_lb;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }
 
